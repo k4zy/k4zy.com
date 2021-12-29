@@ -9,7 +9,7 @@ tags: ["diary", "tech"]
 まず調査のきっかけとして、一番手軽でかつ情報がありそうなサーバーログを Kibana を使って探した。しかし直近のログから該当ユーザーが送信したと思われるものは 1 件も見当たらなかった。そこでネットワークリクエストを投げる前にクライアント側でエラーが発生していると考え、モバイルアプリ側のエラー収集サービスである Crashlytics で該当の user_id に関連するエラーを探した。こちらは多数見つかった。日時の新しいセッションを一つ選びスタックトレースを追ってみると API リクエストをする際に呼ばれる認証系のコード内で「String から long への変換」に失敗してクラッシュしていることがわかった。初歩的で単純な例外に思えたが該当の行を読んでもなぜ`NumberFormatException: For input string "null"`となるのかまるで理解できなかった。重要なのは `null.toLong()` ではなく `"null".toLong()`であるところだった。周辺のコードを読む限りにおいて文字列の"null"なんて入る余地が無いように思えた。僕の頭では解決できそうになかったので、認証周りに詳しい同僚に調査の続きをお願いした。  
 結果から言うと問題は同僚が解決してくれた。原因は Kolin の`Any?.toString()`の振る舞いで、このメソッドは直感に反して`String?`ではなく`String`を返り型とする。ではレシーバーが null だった時にどうするか、文字列の"null"を返すのだ。原因がわかり問題は既に修正された。
 
-[https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/to-string.html:title]
+[toString - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/to-string.html)
 
 ```
 Returns a string representation of the object.

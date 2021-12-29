@@ -1,6 +1,7 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import rehypeRow from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 
@@ -12,7 +13,8 @@ import rehypeStringify from "rehype-stringify";
 const markdownToHtml = async (markdown: string) => {
   const result = await unified()
     .use(remarkParse)
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRow)
     .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(markdown);

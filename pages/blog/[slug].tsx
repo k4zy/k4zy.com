@@ -1,6 +1,6 @@
 import { NextPage, InferGetStaticPropsType } from "next";
-import { getAllPosts, getPostBySlug } from "../../libs/ContentResolver";
-import markdownToHtml from "../../libs/markdownToHtml";
+import { getAllPosts, getPostBySlug } from "@/libs/ContentResolver";
+import markdownToHtml from "@/libs/markdownToHtml";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 

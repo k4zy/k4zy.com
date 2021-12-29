@@ -1,7 +1,7 @@
 // pages/index.js
 import { NextPage, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import { getAllPosts } from "../libs/ContentResolver";
+import { getAllPosts } from "@/libs/ContentResolver";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 

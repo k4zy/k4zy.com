@@ -1,12 +1,9 @@
+import "highlight.js/styles/a11y-dark.css";
+import "../styles/globals.css";
 import { AppProps } from "next/app";
-import { ChakraProvider } from "@chakra-ui/react";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-  return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
-  );
-};
+function MyApp({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
 
 export default MyApp;

@@ -160,3 +160,7 @@ dt {
 .articles li + li {
   margin-top: 2rem;
 }
+
+.hljs {
+  background: transparent;
+}

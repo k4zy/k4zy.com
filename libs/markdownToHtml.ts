@@ -1,12 +1,21 @@
-import { remark } from "remark";
-import html from "remark-html";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
+
 /**
- * remarkによるmarkdownの構文変換を行う
+ * unifiedによるmarkdownの構文変換を行う
  * @param markdown markdown記法で書かれたプレーンテキスト
  * @returns 変換結果をString化したもの
  */
 const markdownToHtml = async (markdown: string) => {
-  const result = await remark().use(html).process(markdown);
+  const result = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
+    .process(markdown);
   return result.toString();
 };
 

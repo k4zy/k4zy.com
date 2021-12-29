@@ -33,7 +33,11 @@ body {
 
 article,
 section {
-  margin: 4rem 0;
+  margin: 3.6rem 0;
+}
+
+section.post {
+  margin: 0 0 1rem 0;
 }
 
 a {
@@ -45,13 +49,12 @@ a {
 h1 {
   font-size: 1.5rem;
   line-height: 1.3;
-  margin-bottom: 0;
-  margin-top: 0.5rem;
 }
 
 h1.title {
   font-weight: 900;
   font-size: 1.2rem;
+  margin: 2rem 0 0 0;
 }
 
 h2 {
@@ -151,13 +154,13 @@ blockquote + figcaption:before {
 }
 
 time {
-  color: var(--color-light);
+  color: rgba(0, 0, 0, 0.4);
   display: block;
   font-size: 0.8rem;
 }
 
 nav {
-  padding: 1rem 0;
+  padding: 0.4rem 0 2rem 0;
 }
 
 nav a {

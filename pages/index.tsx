@@ -1,5 +1,6 @@
 // pages/index.js
 import { NextPage, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { getAllPosts } from "@/libs/ContentResolver";
 import dayjs from "dayjs";
@@ -8,6 +9,9 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ allPosts }) => (
   <main>
+    <Head>
+      <title>k4zy no blog</title>
+    </Head>
     <h1 className="title">k4zy no blog</h1>
     <nav>
       <a href="https://k4zy.com">Home</a>/
@@ -17,7 +21,7 @@ const Home: NextPage<Props> = ({ allPosts }) => (
         rel="noopener noreferrer"
       >
         GitHub
-      </a>{" "}
+      </a>
       /
       <a
         href="https://twitter.com/_k4zy"

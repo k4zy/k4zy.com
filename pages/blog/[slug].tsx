@@ -1,4 +1,5 @@
 import { NextPage, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 import { getAllPosts, getPostBySlug } from "@/libs/ContentResolver";
 import markdownToHtml from "@/libs/markdownToHtml";
 import dayjs from "dayjs";
@@ -7,6 +8,9 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => (
   <article>
+    <Head>
+      <title>{post.title} - k4zy.com</title>
+    </Head>
     <h1 className="title">{post.title}</h1>
     <p>
       <time>{dayjs(post.date).format("MMM d, YYYY")}</time>

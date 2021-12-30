@@ -7,18 +7,20 @@ import dayjs from "dayjs";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => (
-  <article>
-    <Head>
-      <title>{post.title} - k4zy.com</title>
-    </Head>
-    <h1 className="title">{post.title}</h1>
-    <p>
-      <time>{dayjs(post.date).format("MMM d, YYYY")}</time>
-    </p>
-    <section>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </section>
-  </article>
+  <main>
+    <article>
+      <Head>
+        <title>{post.title} - k4zy.com</title>
+      </Head>
+      <h1 className="blogTitle">{post.title}</h1>
+      <p>
+        <time>{dayjs(post.date).format("MMM d, YYYY")}</time>
+      </p>
+      <section>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </section>
+    </article>
+  </main>
 );
 
 export default Post;

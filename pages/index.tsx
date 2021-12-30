@@ -12,25 +12,6 @@ const Home: NextPage<Props> = ({ allPosts }) => (
     <Head>
       <title>k4zy no blog</title>
     </Head>
-    <h1 className="title">k4zy no blog</h1>
-    <nav>
-      <a href="https://k4zy.com">Home</a>/
-      <a
-        href="https://github.com/k4zy"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
-      /
-      <a
-        href="https://twitter.com/_k4zy"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Twitter
-      </a>
-    </nav>
     {allPosts?.map((post) => (
       <section className="post" key={post.slug}>
         <Link href={`/blog/${post.slug}`}>

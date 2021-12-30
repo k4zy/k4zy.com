@@ -8,6 +8,8 @@ html {
     Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji",
     "Segoe UI Symbol";
   font-size: 16px;
+  margin: 0 auto;
+  max-width: 36rem;
   line-height: 1.8;
   background-color: #fffefc;
 }
@@ -24,16 +26,18 @@ html {
   }
 }
 
-body {
-  margin: 0 auto;
-  max-width: 36rem;
-  padding: 2rem 1rem;
+header {
+  /* background-color: #f8f8f8; */
+}
+
+main {
+  padding: 1.6rem 0;
   word-wrap: break-word;
 }
 
 article,
 section {
-  margin: 3.6rem 0;
+  margin: 0;
 }
 
 section.post {
@@ -54,7 +58,15 @@ h1 {
 h1.title {
   font-weight: 900;
   font-size: 1.2rem;
-  margin: 2rem 0 0 0;
+  padding: 2rem 0 0 0;
+  margin: 0;
+}
+
+h1.blogTitle {
+  font-weight: 900;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
 }
 
 h2 {

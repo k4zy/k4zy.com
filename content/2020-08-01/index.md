@@ -11,7 +11,7 @@ Vector Asset Studio は Android Studio に組み込まれたツールで GUI ツ
 
 ## AOSP 内の非公式ツール
 
-そんな折に非公式ですが自動化する手段を教えてもらったのですが下記はその紹介です。
+そんな折に非公式ですが自動化する手段を教えて頂いたので下記はその紹介です。
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">だいぶ前の情報なので今も参考になるかはわかりませんが、以前こういう方法でやっていたことはあります<a href="https://t.co/Dbs7sjbGKo">https://t.co/Dbs7sjbGKo</a></p>&mdash; こにふぁー (@konifar) <a href="https://twitter.com/konifar/status/1289071980642054144?ref_src=twsrc%5Etfw">July 31, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

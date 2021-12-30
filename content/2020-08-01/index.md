@@ -4,16 +4,22 @@ date: "20200801"
 tags: ["tech"]
 ---
 
-Android アプリではベクター形式の画像を扱うために[VectorDrawable](https://developer.android.com/guide/topics/graphics/vector-drawable-resources)という SVG と(おおよそ)互換のあるフォーマットをサポートしています。しかし残念なことに VectorDrawable の出力をサポートしているデザインツールはほぼ無いためベクターデータをアプリ内で扱いたい場合には「デザインツールから SVG に書き出してもらう-> [Vector Asset Studio](https://developer.android.com/studio/write/vector-asset-studio)を利用して SVG を VectorDrawable に変換する」という手順を踏みます。  
-Vector Asset Studio は Android Studio に組み込まれたツールで GUI インターフェースしかサポートされていません。これは悩みの種で例えば複数のプラットフォーム間で共通利用しているアイコンセットがあった場合には SVG が追加/更新されたら VectorDrawable も追従する CI/CD を用意したいものですが CLI からアクセスする手段が無いので自動化出来ないんですよね。そんなことを Twitter に書いたらこにふぁーさんから素晴らしい情報を教えてもらったので今文字を書いています。
+## VectorDrawable とは
+
+Android アプリではベクター形式の画像を扱うために[VectorDrawable](https://developer.android.com/guide/topics/graphics/vector-drawable-resources)という SVG とおおよそ互換のあるフォーマットをサポートしています。しかし VectorDrawable の出力をサポートしているデザインツールはほぼ無いためベクターデータをアプリ内で扱いたい場合には「デザインツールから SVG に書き出してもらう-> [Vector Asset Studio](https://developer.android.com/studio/write/vector-asset-studio)を利用して SVG を VectorDrawable に変換する」という手順を踏みます。  
+Vector Asset Studio は Android Studio に組み込まれたツールで GUI ツールです。これは悩みの種で例えば複数のプラットフォーム間で共通利用しているアイコンセットがあった場合に、SVG が追加/変更されたら VectorDrawable も更新する仕組みを用意したいですが CLI サポートがないため通常は手作業になります。
+
+## AOSP 内の非公式ツール
+
+そんな折に非公式ですが自動化する手段を教えてもらったのですが下記はその紹介です。
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">だいぶ前の情報なので今も参考になるかはわかりませんが、以前こういう方法でやっていたことはあります<a href="https://t.co/Dbs7sjbGKo">https://t.co/Dbs7sjbGKo</a></p>&mdash; こにふぁー (@konifar) <a href="https://twitter.com/konifar/status/1289071980642054144?ref_src=twsrc%5Etfw">July 31, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 教えて頂いた[IssueTracker](https://issuetracker.google.com/issues/37088253)の要点は
 
-- Vector Asset Studio 自体は AOSP の一部として開発されているからソースコードにアクセスすることが出来るよ
-- 実は`vd-tool`という CLI 用のコマンドが存在していて、自分でビルドすれば使えるよ
-- ただ今の所公式に提供するつもりはないよ
+- Vector Asset Studio 自体は AOSP の一部として開発されているからソースコードにアクセスすることが出来る
+- 実は`vd-tool`という CLI 用のコマンドが存在していて、自分でビルドすれば使える
+- ただ今の所公式に提供するつもりはない
 
 という話でした。2016 年に立てられた issue の情報のため今のレポジトリでは多少手順が変わっているのかなと思ってコードをチェックアウトして試してみたのですが、全く同じ手順でビルド出来ました。:tada:
 
@@ -34,14 +40,14 @@ repo sync -c -j4 -q #4は並列数なのでお好みで
 
 [Android Developer Tools - Checkout and build the source code](https://android.googlesource.com/platform/tools/base/+/studio-master-dev/source.md)
 
-チェックアウトしたら vd-tool をビルドします
+チェックアウトしたら vd-tool をビルドします.
 
 ```sh
 cd tools/
 ./gradlew :base:vector-drawable-tool:distZip
 ```
 
-# SVG を一括で変換する
+## SVG を一括で変換する
 
 ビルドが成功すると `$PROJECT_ROOT/out/build/base/vector-drawable-tool/build/distributions` に`vd-tool.zip`が生成されているので解凍して利用します。  
 例えば下記のように実行すると`/your/icon/svg/`以下の svg をすべて VectorDrawable に変換して`/your/icon/vd`に配置してくれます。
@@ -50,7 +56,7 @@ cd tools/
 bin/vd-tool -c -in /your/icon/svg -out /your/icon/vd
 ```
 
-引数で width や height の指定も可能です
+引数で width や height の指定も可能です。
 
 ```
 Usage: [-c] [-d] [-in <file or directory>] [-out <directory>] [-widthDp <size>] [-heightDp <size>] [-addHeader]

@@ -27,12 +27,11 @@ export const HeadTemplate: React.FC<HeadType> = ({
   const description =
     pagedescription || `${process.env.NEXT_PUBLIC_DESCRIPTION}`;
   const url = pagepath
-    ? `${process.env.NEXT_PUBLIC_URL}${pagepath}`
-    : `${process.env.NEXT_PUBLIC_URL}`; // NEXT_PUBLIC_URLは環境変数です。https://・・・・のようなURLをホスティングサービス側で設定します
-  // 画像のURLは以下のようにして、画像の指定がない時にはデフォルトの画像をおいて設定されるようにすると良いです。Next.jsであれば　public/配下に画像を設置することができます。
+    ? `${process.env.NEXT_PUBLIC_DOMAIN}${pagepath}`
+    : `${process.env.NEXT_PUBLIC_DOMAIN}`;
   const imgurl = pageimg
-    ? `${process.env.NEXT_PUBLIC_URL}${pageimg}`
-    : postimg || `${process.env.NEXT_PUBLIC_URL}banner.png`;
+    ? `${process.env.NEXT_PUBLIC_DOMAIN}${pageimg}`
+    : postimg || `${process.env.NEXT_PUBLIC_DOMAIN}banner.png`;
   const imgw = pageimgw || "1200px";
   const imgh = pageimgh || "630px";
 

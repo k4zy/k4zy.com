@@ -18,7 +18,7 @@ const Home: NextPage<Props> = ({ allPosts }) => (
           <a className="postLink">{post.title}</a>
         </Link>
         <time dateTime={post.date} title={post.date}>
-          {dayjs(post.date).format("MMM d, YYYY")}
+          {dayjs(post.date).format("MMM D, YYYY")}
         </time>
       </section>
     ))}

@@ -28,7 +28,7 @@ const Post: NextPage<Props> = ({ post }) => {
           </Head>
           <h1 className="blogTitle">{post.title}</h1>
           <p>
-            <time>{dayjs(post.date).format("MMM d, YYYY")}</time>
+            <time>{dayjs(post.date).format("MMM D, YYYY")}</time>
           </p>
           <section>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />

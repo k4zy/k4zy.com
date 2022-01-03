@@ -1,6 +1,6 @@
 ---
 title: "Fragment in Jetpack Compose は動くのか"
-date: "20220102"
+date: "20220103"
 tags: ["diary"]
 ---
 

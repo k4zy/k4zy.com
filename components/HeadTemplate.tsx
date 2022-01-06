@@ -1,63 +1,55 @@
 import Head from "next/head";
+import NextHeadSeo from "next-head-seo";
+import { useRouter } from "next/router";
 
 export type HeadType = {
   pagetitle?: string;
   pagedescription?: string;
-  pagepath?: string;
-  pageimg?: string;
   postimg?: string;
-  pageimgw?: string;
-  pageimgh?: string;
-  keyword?: string;
 };
 
 export const HeadTemplate: React.FC<HeadType> = ({
   pagetitle,
   pagedescription,
-  pagepath,
-  pageimg,
   postimg,
-  pageimgw,
-  pageimgh,
-  keyword,
 }) => {
   const title = pagetitle
     ? `${pagetitle} | ${process.env.NEXT_PUBLIC_TITLE}`
     : `${process.env.NEXT_PUBLIC_TITLE}`;
   const description =
     pagedescription || `${process.env.NEXT_PUBLIC_DESCRIPTION}`;
-  const url = pagepath
-    ? `${process.env.NEXT_PUBLIC_DOMAIN}${pagepath}`
-    : `${process.env.NEXT_PUBLIC_DOMAIN}`;
-  const imgurl = pageimg
-    ? `${process.env.NEXT_PUBLIC_DOMAIN}${pageimg}`
-    : postimg || `${process.env.NEXT_PUBLIC_DOMAIN}banner.png`;
-  const imgw = pageimgw || "1200px";
-  const imgh = pageimgh || "630px";
+
+  const router = useRouter();
+  const path = router.asPath;
+  const APP_ROOT_URL = process.env.NEXT_PUBLIC_APP_ROOT_URL;
+  const pageUrl = APP_ROOT_URL + path;
+
+  const imgurl = postimg ? `${postimg}` : "https://i.imgur.com/Rejg5AN.png";
+  const imgw = "1200px";
+  const imgh = "630px";
 
   return (
-    <Head>
-      <html lang="ja" />
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={title} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta name="keywords" content={keyword || title} />
-      <meta property="og:url" content={url} />
-      <meta property="og:type" content="website" />
-      <meta property="og:locale" content="ja_JP" />
-      <meta property="og:image" content={imgurl} />
-      <meta property="og:image:width" content={imgw} />
-      <meta property="og:image:height" content={imgh} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={imgurl} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={imgurl} />
-      <link rel="canonical" href={url} />
-    </Head>
+    <>
+      <NextHeadSeo
+        title={title}
+        canonical={pageUrl}
+        description={description}
+        robots="index, follow"
+        og={{
+          image: imgurl,
+          type: "article",
+          siteName: "k4zy no blog",
+        }}
+        twitter={{
+          site: "@_k4zy",
+          card: "summary_large_image",
+        }}
+      />
+      <Head>
+        <meta property="og:image:width" content={imgw} />
+        <meta property="og:image:height" content={imgh} />
+        <meta property="og:locale" content="ja_JP" />
+      </Head>
+    </>
   );
 };

@@ -18,7 +18,6 @@ const Post: NextPage<Props> = ({ post }) => {
       <HeadTemplate
         pagetitle={post.title}
         pagedescription={post.title}
-        pagepath="blogs"
         postimg={ogImageUrl}
       />
       <main>

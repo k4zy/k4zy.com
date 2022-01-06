@@ -28,6 +28,13 @@ const Post: NextPage<Props> = ({ post }) => {
           </Head>
           <h1 className="blogTitle">{post.title}</h1>
           <p>
+            <ul id="tags">
+              {post.tags.map((tag) => (
+                <li className="tag" key={tag}>
+                  {tag}
+                </li>
+              ))}
+            </ul>
             <time>{dayjs(post.date).format("MMM D, YYYY")}</time>
           </p>
           <section>

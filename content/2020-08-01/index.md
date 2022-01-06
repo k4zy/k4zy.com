@@ -1,7 +1,7 @@
 ---
 title: "CLIでSVGをVectorDrawableに一括変換する"
 date: "20200801"
-tags: ["tech"]
+tags: ["tech", "android"]
 ---
 
 ## VectorDrawable とは

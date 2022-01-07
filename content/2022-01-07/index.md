@@ -6,7 +6,7 @@ tags: ["diary", "tech"]
 
 # MeetingBar
 
-Mac のアプリで画面上部のメニューバーに一日の予定を表示してくれる。Google カレンダーの情報を表示するために、標準のカレンダーアプリを経由する必要があるのが少しわかりにくいですが、この手のアプリは全てこの方法なので技術的な制約があるのかも。もともと Meeter というほぼ同じ機能の(一部)有料アプリ使っていたんだけど、カレンダーの同期が不安定になって乗り換えました。
+Mac のアプリで画面上部のメニューバーに一日の予定を表示してくれる。Google カレンダーの情報を表示するために、標準のカレンダーアプリを経由する必要があるのが少しわかりにくいですが、この手のアプリは全てこの方法なので技術的な制約があるのかも。もともと Meeter というほぼ同じ機能の(一部)有料アプリ使っていたんだけど、カレンダーの同期が不安定になって乗り換えた。
 
 [MeetingBar - App Store ](https://apps.apple.com/jp/app/meetingbar/id1532419400?ign-itscg=30200&ign-itsct=apps_box_appicon)
 
@@ -26,7 +26,7 @@ Chrome 拡張として公開されていて、GitHub に色々な機能を追加
 
 # Copy as Markdown
 
-こちらも Chrome 拡張として公開されている。Chrome で範囲選択すると Markdown 形式でコピー出来るようになります。
+こちらも Chrome 拡張として公開されている。Chrome で範囲選択すると Markdown 形式でコピー出来るようになる。
 主に GitHub の Issue などにライブラリのリリースノートなどの情報を貼る時に重宝してる。
 
 [Copy as Markdown - Chrome ウェブストア](https://chrome.google.com/webstore/detail/copy-as-markdown/fkeaekngjflipcockcnpobkpbbfbhmdn?hl=ja)

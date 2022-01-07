@@ -1,6 +1,7 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import rehypeExternalLinks from "rehype-external-links";
 import rehypeRow from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
@@ -15,6 +16,10 @@ const markdownToHtml = async (markdown: string) => {
     .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRow)
+    .use(rehypeExternalLinks, {
+      target: "_blank",
+      rel: ["noopener noreferrer"],
+    })
     .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(markdown);

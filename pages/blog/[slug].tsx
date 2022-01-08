@@ -1,6 +1,6 @@
 import { NextPage, InferGetStaticPropsType } from "next";
 import Head from "next/head";
-import { getAllPosts, getPostBySlug } from "@/libs/ContentResolver";
+import { getAllPosts, getPostBySlug } from "@/libs/contentResolver";
 import { markdownToHtml, markdownToText } from "@/libs/markdownToHtml";
 import dayjs from "dayjs";
 import { HeadTemplate } from "@/components/HeadTemplate";

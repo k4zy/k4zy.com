@@ -7,11 +7,6 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import retextStringify from "retext-stringify";
 
-/**
- * unifiedによるmarkdownの構文変換を行う
- * @param markdown markdown記法で書かれたプレーンテキスト
- * @returns 変換結果をString化したもの
- */
 export const markdownToHtml = async (markdown: string) => {
   const result = await unified()
     .use(remarkParse)

@@ -2,7 +2,7 @@
 import { NextPage, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { getAllPosts } from "@/libs/ContentResolver";
+import { getAllPosts } from "@/libs/contentResolver";
 import { HeadTemplate } from "@/components/HeadTemplate";
 import dayjs from "dayjs";
 

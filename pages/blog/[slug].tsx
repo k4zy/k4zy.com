@@ -1,7 +1,7 @@
 import { NextPage, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import { getAllPosts, getPostBySlug } from "@/libs/ContentResolver";
-import markdownToHtml from "@/libs/markdownToHtml";
+import { markdownToHtml, markdownToText } from "@/libs/markdownToHtml";
 import dayjs from "dayjs";
 import { HeadTemplate } from "@/components/HeadTemplate";
 import { createOgpImage } from "@/libs/createOgpImage";
@@ -17,7 +17,7 @@ const Post: NextPage<Props> = ({ post }) => {
     <>
       <HeadTemplate
         pagetitle={post.title}
-        pagedescription={post.title}
+        pagedescription={post.summary}
         postimg={ogImageUrl}
       />
       <main>
@@ -72,12 +72,15 @@ export const getStaticProps = async ({ params }: any) => {
   ]);
 
   const content = await markdownToHtml(post.content);
+  const plainText = await markdownToText(post.content);
+  const summary = plainText.slice(0, 80);
 
   return {
     props: {
       post: {
         ...post,
         content,
+        summary,
       },
     },
   };

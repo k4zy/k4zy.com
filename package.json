@@ -5,15 +5,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "today": "node scripts/today.js"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "base64url": "^3.0.1",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.5",
     "framer-motion": "^4.1.17",
     "gray-matter": "^4.0.3",
+    "handlebars": "^4.7.7",
     "highlight.js": "^11.3.1",
     "microcms-js-sdk": "^2.0.0",
     "next": "^12.3.1",

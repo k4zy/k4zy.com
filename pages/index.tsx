@@ -16,8 +16,8 @@ const Home: NextPage<Props> = ({ allPosts }) => (
     </Head>
     {allPosts?.map((post) => (
       <section className="post" key={post.slug}>
-        <Link href={`/blog/${post.slug}`}>
-          <a className="postLink">{post.title}</a>
+        <Link href={`/blog/${post.slug}`} className="postLink">
+          {post.title}
         </Link>
         <time dateTime={post.date} title={post.date}>
           {dayjs(post.date).format("MMM D, YYYY")}

@@ -58,12 +58,13 @@ export const GoogleAnalytics = () => (
           strategy="afterInteractive"
         />
         <Script
+          id="gtag-init"
           defer
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());    
+              gtag('js', new Date());
               gtag('config', '${GA_ID}');
             `,
           }}

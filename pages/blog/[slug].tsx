@@ -23,7 +23,7 @@ const Post: NextPage<Props> = ({ post }) => {
       <main>
         <article>
           <Head>
-            <title>{post.title} - k4zy.com</title>
+            <title>{`${post.title} - k4zy.com`}</title>
           </Head>
           <h1 className="blogTitle">{post.title}</h1>
           <p>
